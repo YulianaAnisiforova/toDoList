@@ -2,51 +2,81 @@ body {
     background-color: rgb(246, 234, 218);
 }
 
-.app {
+.colorSelection {
+    height: 50px;
+    width: 120px;
+    text-align: center;
+    border: 1px solid rgb(67, 59, 48);
+    border-radius: 10px;
+    background-color: rgb(246, 234, 218);
+    font-size: 16px;
+    color: rgb(67, 59, 48);
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.colorSelection:hover {
+    background-color: rgb(230, 214, 193);
+    transition: 0.5s;
+}
+
+.main {
     display: flex;
     justify-content: center;
 }
 
-.themeColor {
-    border: 1px solid black;
-    height: 100px;
-    width: 100px;
-    /* margin-left: auto;  */
-    /* margin-right: auto; */
-    /* float: right; */
-    position: relative;
-    margin-right: auto;
-}
-
-.colorSelection {
-
-}
-
 .listAndBar {
-    border: 1px solid red;
     display: flex;
+    margin-top: 20px;
 }
 
 .list {
-    border: 1px solid black;
+    border: 1px solid rgb(67, 59, 48);
+    border-radius: 10px;
     height: 900px;
     width: 600px;
+    background-color: rgb(253, 249, 244);
+    color: rgb(67, 59, 48);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
 }
 
 .optionBar {
-    border: 1px solid black;
-    height: 900px;
-    width: 400px;
+    /* height: 900px; */
+    /* width: 400px; */
 }
 
 .addElement {
-    border: 1px solid black;
+    border: 1px solid rgb(67, 59, 48);
+    border-radius: 10px;
     height: 100px;
     width: 300px;
+    background-color: rgb(253, 249, 244);
+    margin-left: 50px;
+    margin-top: 100px;
 }
 
 .addButton {
-    border: 1px solid black;
-    height: 30px;
-    width: 100px;
+    border: 1px solid rgb(67, 59, 48);
+    border-radius: 10px;
+    background-color: rgb(67, 59, 48);
+    height: 50px;
+    width: 120px;
+    color: rgb(253, 249, 244);
+    font-size: 16px;
+    opacity: 0.7;
+    margin-left: 140px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    opacity: 1;
+    transition: 0.5s;
 }
