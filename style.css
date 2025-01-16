@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(246, 234, 218);
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+}
+
+.themeColor {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    /* margin-left: auto;  */
+    /* margin-right: auto; */
+    /* float: right; */
+    position: relative;
+    margin-right: auto;
+}
+
+.colorSelection {
+
+}
+
+.listAndBar {
+    border: 1px solid red;
+    display: flex;
+}
+
+.list {
+    border: 1px solid black;
+    height: 900px;
+    width: 600px;
+}
+
+.optionBar {
+    border: 1px solid black;
+    height: 900px;
+    width: 400px;
+}
+
+.addElement {
+    border: 1px solid black;
+    height: 100px;
+    width: 300px;
+}
+
+.addButton {
+    border: 1px solid black;
+    height: 30px;
+    width: 100px;
+}
