@@ -38,6 +38,7 @@ body {
     background-color: rgb(253, 249, 244);
     color: rgb(67, 59, 48);
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 2px 2px 7px rgb(67, 59, 48);
 }
 
 .title {
@@ -79,4 +80,8 @@ body {
 .addButton:hover {
     opacity: 1;
     transition: 0.5s;
+}
+
+.addButton:active {
+    background-color: rgb(45, 39, 30);
 }
