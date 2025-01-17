@@ -13,10 +13,12 @@ body {
     color: rgb(67, 59, 48);
     margin-left: 50px;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .colorSelection:hover {
-    background-color: rgb(230, 214, 193);
+    /* background-color: rgb(230, 214, 193); */
+    opacity: 1;
     transition: 0.5s;
 }
 
@@ -64,7 +66,7 @@ body {
 }
 
 .addButton {
-    border: 1px solid rgb(67, 59, 48);
+    border: none;
     border-radius: 10px;
     background-color: rgb(67, 59, 48);
     height: 50px;
