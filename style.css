@@ -17,7 +17,6 @@ body {
 }
 
 .colorSelection:hover {
-    /* background-color: rgb(230, 214, 193); */
     opacity: 1;
     transition: 0.5s;
 }
@@ -40,7 +39,12 @@ body {
     background-color: rgb(253, 249, 244);
     color: rgb(67, 59, 48);
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     box-shadow: 2px 2px 7px rgb(67, 59, 48);
+}
+
+.list p {
+    text-align: center;
 }
 
 .title {
@@ -86,4 +90,12 @@ body {
 
 .addButton:active {
     background-color: rgb(45, 39, 30);
+}
+
+.tip {
+    text-align: center;
+    color: rgb(67, 59, 48);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 40px;    
 }
