@@ -3,7 +3,8 @@ let list = document.querySelector('.list')
 let addElement = document.querySelector('.addElement')
 let addButton = document.querySelector('.addButton')
 let mainBack = document.body
-let listTask = document.querySelector('.list p')
+let task = null
+let isCompleted = false
 
 let tasks = ['to wake up at 7:30']
 let count = 0
@@ -47,8 +48,9 @@ updateList(count)
 function updateList (count) {
     for (let i = 0; i < tasks.length; i++) {
         if (i == count)
-            list.innerHTML += "<p>" + tasks[i] + ' ' + "</p>"
+            list.innerHTML += "<p class='task'>" + tasks[i] + ' ' + "</p>"
     }
+    task = document.querySelector('.task')
 }
 
 addButton.onclick = () => {
@@ -60,3 +62,7 @@ addButton.onclick = () => {
 
     addElement.value = null
 }
+
+task.addEventListener("dblclick", (event) => {
+    task.style.textDecoration = 'line-through'
+});
