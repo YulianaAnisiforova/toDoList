@@ -3,11 +3,10 @@ let list = document.querySelector('.list')
 let addElement = document.querySelector('.addElement')
 let addButton = document.querySelector('.addButton')
 let deleteButton = document.querySelector('.deleteButton')
+let cleanButton = document.querySelector('.cleanButton')
 let mainBack = document.body
 let tip = document.querySelector('.tip')
 let task = null
-// let isCompleted = false
-
 let tasks = ['to wake up at 7:30']
 let count = 0
 
@@ -31,6 +30,9 @@ colorSelection.addEventListener("change", (event) => {
         deleteButton.style.background = 'rgb(67, 59, 48)'
         deleteButton.style.color = 'rgb(253, 249, 244)'
 
+        cleanButton.style.background = 'rgb(67, 59, 48)'
+        cleanButton.style.color = 'rgb(253, 249, 244)'
+
         tip.style.color = 'rgb(67, 59, 48)'
 
     } else if (val == 'dark theme') {
@@ -52,6 +54,9 @@ colorSelection.addEventListener("change", (event) => {
 
         deleteButton.style.background = 'rgb(246, 234, 218)'
         deleteButton.style.color = 'rgb(67, 59, 48)'
+
+        cleanButton.style.background = 'rgb(246, 234, 218)'
+        cleanButton.style.color = 'rgb(67, 59, 48)'
     }
 });
 
@@ -60,12 +65,12 @@ updateList(count)
 function updateList (count) {
     for (let i = 0; i < tasks.length; i++) {
         if (i == count)
-            list.innerHTML += "<p class='task'>" + tasks[i] + ' ' + "</p>"
+            list.innerHTML += `<p class='task' id="${i}">` + tasks[i] + ' ' + "</p>"
     }
     task = document.querySelector('.task')
 }
 
-function updateDeletedList (count) {
+function updateDeletedTask (count) {
     task.remove()
 }
 
@@ -86,5 +91,12 @@ task.addEventListener("dblclick", (event) => {
 deleteButton.onclick = () => {
     tasks.splice(0, 1)
     count--
-    updateDeletedList(count)
+    updateDeletedTask(count)
+}
+
+cleanButton.onclick = () => {
+    for (let i = 0; i < tasks.length; i++) {
+        tasks.pop()
+        updateDeletedTask()
+    }
 }
