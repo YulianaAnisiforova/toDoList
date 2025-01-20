@@ -7,8 +7,10 @@ let cleanButton = document.querySelector('.cleanButton')
 let mainBack = document.body
 let tip = document.querySelector('.tip')
 let task = []
-let tasks = ['to wake up at 7:30']
+let allTasks
+let tasks = []
 let count = 0
+let isCompleted = []
 
 colorSelection.addEventListener("change", (event) => {
     let val = colorSelection.options[colorSelection.selectedIndex].value
@@ -64,24 +66,32 @@ colorSelection.addEventListener("change", (event) => {
 let updateList = (count) => {
     for (let i = 0; i < tasks.length; i++) {
         if (i == count) {
-            list.innerHTML += `<p id="${i}">` + tasks[i] + ' ' + "</p>"
+            list.innerHTML += `<p class="task" id="${i}">` + tasks[i] + ' ' + "</p>"
             task.push(document.getElementById(i))
+            allTasks = document.querySelectorAll('.task')
+            isCompleted.push(false)
         }
     }
-// task = document.querySelector('.task')
 }
 
-updateList(count)
-
 let updateDeletedTask = (i) => {
-    // task[i].remove()
     document.getElementById(i).remove();
+    allTasks = document.querySelectorAll('.task')
+}
+
+let updateID = (startPoint) => {
+    for (let i = startPoint; i < tasks.length + 1; i++) {
+        document.getElementById(startPoint).id = document.getElementById(startPoint).id - 1
+        startPoint++
+    }
 }
 
 addButton.onclick = () => {
     let val = addElement.value
     tasks.push(val)
     count++
+    if (count == 1 && tasks.length == 1)
+        count--
 
     updateList(count)
 
@@ -89,13 +99,27 @@ addButton.onclick = () => {
 }
 
 list.addEventListener("dblclick", (event) => {
-    list.style.textDecoration = 'line-through'
+    allTasks.forEach (el => {
+        event.target.style.textDecoration = 'line-through'
+        isCompleted[event.target] = true
+    });
 });
 
 deleteButton.onclick = () => {
-    tasks.splice(0, 1)
-    count--
-    updateDeletedTask(0)
+    // let a = 0
+    // tasks.splice(a, 1)
+    // count--
+    // updateDeletedTask(a)
+    // updateID(a + 1)
+
+    for (let i = 0; i < isCompleted.length; i++) {
+        if (isCompleted[i] == true) {
+            tasks.splice(i, 1)
+            count--
+            updateDeletedTask(i)
+            updateID(i + 1)
+        }
+    }
 }
 
 cleanButton.onclick = () => {
