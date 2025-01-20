@@ -99,25 +99,19 @@ addButton.onclick = () => {
 }
 
 list.addEventListener("dblclick", (event) => {
-    allTasks.forEach (el => {
-        event.target.style.textDecoration = 'line-through'
-        isCompleted[event.target] = true
-    });
+    for (let i = 0; i < allTasks.length; i++) {
+        event.target.style.textDecoration = 'line-through';
+        isCompleted[event.target.id] = true
+    }
 });
 
 deleteButton.onclick = () => {
-    // let a = 0
-    // tasks.splice(a, 1)
-    // count--
-    // updateDeletedTask(a)
-    // updateID(a + 1)
-
     for (let i = 0; i < isCompleted.length; i++) {
         if (isCompleted[i] == true) {
             tasks.splice(i, 1)
             count--
             updateDeletedTask(i)
-            updateID(i + 1)
+            // updateID(i + 1)
         }
     }
 }
