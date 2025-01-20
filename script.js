@@ -6,7 +6,7 @@ let deleteButton = document.querySelector('.deleteButton')
 let cleanButton = document.querySelector('.cleanButton')
 let mainBack = document.body
 let tip = document.querySelector('.tip')
-let task = null
+let task = []
 let tasks = ['to wake up at 7:30']
 let count = 0
 
@@ -60,18 +60,22 @@ colorSelection.addEventListener("change", (event) => {
     }
 });
 
-updateList(count)
 
-function updateList (count) {
+let updateList = (count) => {
     for (let i = 0; i < tasks.length; i++) {
-        if (i == count)
-            list.innerHTML += `<p class='task' id="${i}">` + tasks[i] + ' ' + "</p>"
+        if (i == count) {
+            list.innerHTML += `<p id="${i}">` + tasks[i] + ' ' + "</p>"
+            task.push(document.getElementById(i))
+        }
     }
-    task = document.querySelector('.task')
+// task = document.querySelector('.task')
 }
 
-function updateDeletedTask (count) {
-    task.remove()
+updateList(count)
+
+let updateDeletedTask = (i) => {
+    // task[i].remove()
+    document.getElementById(i).remove();
 }
 
 addButton.onclick = () => {
@@ -84,19 +88,21 @@ addButton.onclick = () => {
     addElement.value = null
 }
 
-task.addEventListener("dblclick", (event) => {
-    task.style.textDecoration = 'line-through'
+list.addEventListener("dblclick", (event) => {
+    list.style.textDecoration = 'line-through'
 });
 
 deleteButton.onclick = () => {
     tasks.splice(0, 1)
     count--
-    updateDeletedTask(count)
+    updateDeletedTask(0)
 }
 
 cleanButton.onclick = () => {
-    for (let i = 0; i < tasks.length; i++) {
+    let tasksLength = tasks.length
+    for (let i = 0; i < tasksLength; i++) {
         tasks.pop()
-        updateDeletedTask()
+        updateDeletedTask(i)
     }
+    count = 0
 }
