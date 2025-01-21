@@ -62,7 +62,6 @@ colorSelection.addEventListener("change", (event) => {
     }
 });
 
-
 let updateList = (count) => {
     for (let i = 0; i < tasks.length; i++) {
         if (i == count) {
@@ -75,15 +74,25 @@ let updateList = (count) => {
 }
 
 let updateDeletedTask = (i) => {
-    document.getElementById(i).remove();
+    if (document.getElementById(i)) {
+        document.getElementById(i).remove()
+    }
+
     allTasks = document.querySelectorAll('.task')
 }
 
-let updateID = (startPoint) => {
-    for (let i = startPoint; i < tasks.length + 1; i++) {
-        document.getElementById(startPoint).id = document.getElementById(startPoint).id - 1
-        startPoint++
+let updateID = () => {
+    let buf = 0
+    for (let i = 0; i < isCompleted.length; i++) {
+        if (document.getElementById(i)) {
+            if (i != buf) {
+                document.getElementById(i).id = buf
+            }
+            buf++
+        }
     }
+
+    console.log(tasks.length)
 }
 
 addButton.onclick = () => {
@@ -105,22 +114,37 @@ list.addEventListener("dblclick", (event) => {
     }
 });
 
+let updateCompleted = (countOfTasks) => {
+    for (let i = 0; i < isCompleted.length; i++) {
+        isCompleted[i] = false
+    }
+    let dif = isCompleted.length - countOfTasks
+    for (let i = 0; i < dif; i++) {
+        isCompleted.pop()
+    }
+}
+
 deleteButton.onclick = () => {
+    let countOfTasks = 0
     for (let i = 0; i < isCompleted.length; i++) {
         if (isCompleted[i] == true) {
-            tasks.splice(i, 1)
+            tasks.splice(i, 1) 
+            task.splice(i, 1) 
             count--
             updateDeletedTask(i)
-            // updateID(i + 1)
+            countOfTasks++
         }
     }
+    updateID()
+
+    updateCompleted(countOfTasks)
 }
 
 cleanButton.onclick = () => {
     let tasksLength = tasks.length
     for (let i = 0; i < tasksLength; i++) {
-        tasks.pop()
         updateDeletedTask(i)
+        tasks.pop()
     }
     count = 0
 }
